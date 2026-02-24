@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>        
+    <link rel="stylesheet" href="experiment5.css"/>
+</head>
+<body>
+<div class="Calculator">
+    <table border="2" cellpadding="5">
+        <!-- Display -->
+        <tr>
+            <td colspan="4">
+                <input type="text" id="display">
+            </td>
+        </tr>
+
+        <!-- Row 1 -->
+        <tr>
+            <td><button onclick="clearDisplay()" class="clear">C</button></td>
+            <td><button onclick="appendValue('/')">/</button></td>
+            <td><button onclick="appendValue('*')">*</button></td>
+            <td><button onclick="appendValue('-')">-</button></td>
+        </tr>
+
+        <!-- Row 2 -->
+        <tr>
+            <td><button onclick="appendValue('7')">7</button></td>
+            <td><button onclick="appendValue('8')">8</button></td>
+            <td><button onclick="appendValue('9')">9</button></td>
+            <td><button onclick="appendValue('+')">+</button></td>
+        </tr>
+
+        <!-- Row 3 -->
+        <tr>
+            <td><button onclick="appendValue('4')">4</button></td>
+            <td><button onclick="appendValue('5')">5</button></td>
+            <td><button onclick="appendValue('6')">6</button></td>
+            <td rowspan="2">
+                <button onclick="calculate()" class="equal">=</button>
+            </td>
+        </tr>
+
+        <!-- Row 4 -->
+        <tr>
+            <td><button onclick="appendValue('1')">1</button></td>
+            <td><button onclick="appendValue('2')">2</button></td>
+            <td><button onclick="appendValue('3')">3</button></td>
+        </tr>
+
+        <!-- Row 5 -->
+        <tr>
+            <td colspan="2"><button onclick="appendValue('0')">0</button></td>
+            <td><button onclick="appendValue('.')">.</button></td>
+        </tr>
+
+    </table>
+</div>
+
+<script>
+    function appendValue(value) {
+        document.getElementById("display").value += value;
+    }
+
+    function clearDisplay() {
+        document.getElementById("display").value = "";
+    }
+
+    function calculate() {
+        try {
+            document.getElementById("display").value =
+                eval(document.getElementById("display").value);
+        } catch {
+            alert("Invalid Expression");
+        }
+    }
+</script>
+</body>
+</html>
